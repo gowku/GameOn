@@ -565,18 +565,20 @@ footer {
 }
 
 @media screen and (max-width: 540px) {
-  /* .hero-headline {
-    font-size: 1.5rem;
+  .hero-headline {
+    font-size: 2.5rem;
   }
   .hero-text {
-    font-size: 0.8rem;
-  } */
+    font-size: 1.3rem;
+  }
+  .hero-content {
+    min-width: 0;
+  }
   .topnav a {
     display: none;
   }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 }

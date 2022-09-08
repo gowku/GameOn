@@ -5,8 +5,8 @@ const quantity = document.getElementById("quantity");
 const birthdate = document.getElementById("birthdate");
 const allLocations = document.getElementById("allLocations");
 const locations = document.querySelectorAll("#allLocations .checkbox-input");
-const checkbox1 = document.getElementById("checkbox1");
-const checkbox2 = document.getElementById("checkbox2");
+const conditions = document.getElementById("checkbox1");
+const evenement = document.getElementById("checkbox2");
 const input = document.getElementsByClassName("text-control");
 const form = document.getElementById("form");
 const btnSubmit = document.querySelector(".btn-submit");
@@ -20,6 +20,7 @@ const modalBody = document.querySelector(".modal-body");
 // console.log("allLocations", allLocations);
 // console.log("locations", locations);
 // console.log("checkbox1", checkbox1);
+console.log("checkbox2", evenement);
 // console.log("input", input);
 // console.log("form", form);
 const masqueNomPrenom = /^[A-Za-z-]{2,30}$/;
@@ -100,40 +101,34 @@ quantity.addEventListener("input", () => {
 });
 
 const checkCondition = () => {
-  if (!checkbox1.checked) {
-    checkbox1.parentElement.setAttribute("data-error-visible", true);
-    checkbox1.parentElement.setAttribute("data-error", "Vous devez accepter les conditions");
+  if (!conditions.checked) {
+    conditions.parentElement.setAttribute("data-error-visible", true);
+    conditions.parentElement.setAttribute("data-error", "Vous devez accepter les conditions");
     return false;
   } else {
-    checkbox1.parentElement.setAttribute("data-error-visible", false);
+    conditions.parentElement.setAttribute("data-error-visible", false);
     return true;
   }
 };
 
-checkbox1.addEventListener("input", () => {
+conditions.addEventListener("input", () => {
   checkCondition();
 });
-// const modalConfirm = document.querySelector(".formConfirmation");
-// function launchModalConfirm() {
-//   modalConfirm.style.display = "block";
-// }
-
-// function unlaunchModalConfirm() {
-//   modalConfirm.style.display = "none";
-// }
 
 btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   if (checkprenom() && checkNom() && checkNom() && checkMail() && checkBirthdate() && checkQuantity() && checkCondition()) {
     console.log(true);
     console.log({
-      firstname: firstName.value,
-      lastname: lastName.value,
-      email: email.value,
-      quantity: quantity.value,
-      birthdate: birthdate.value,
-      condition: checkbox1.value,
-      event: checkbox2.value,
+      form: {
+        firstname: firstName.value,
+        lastname: lastName.value,
+        email: email.value,
+        quantity: quantity.value,
+        birthdate: birthdate.value,
+        condition: conditions.checked,
+        event: evenement.checked,
+      },
     });
 
     firstName.value = "";
